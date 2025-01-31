@@ -1,5 +1,5 @@
 <?php
-require_once "includes/db.php"; // Conexión a la base de datos
+
 ?>
 
 <!DOCTYPE html>
@@ -12,14 +12,19 @@ require_once "includes/db.php"; // Conexión a la base de datos
 </head>
 <body class="container mt-5 text-center">
 
-<h1>📚 Bienvenido a BookHub</h1>
-<p>Gestión de libros y autores</p>
+<h1>📚 Welcome to BookHub</h1>
+<p>Books and Authors</p>
 
 <div class="d-flex justify-content-center gap-3 mt-4">
-    <a href="views/list_books.php" class="btn btn-primary">📖 Ver Libros</a>
-    <a href="views/list_authors.php" class="btn btn-secondary">👤 Ver Autores</a>
+    <a href="views/list_books.php" class="btn btn-primary">📖 View Books</a>
+    <a href="views/list_authors.php" class="btn btn-secondary">👤 View Authors</a>
 </div>
 
 </body>
+<footer class="text-center mt-4">
+    <p>&copy; 2025 BookHub. Todos los derechos reservados.</p>
+</footer>
+</body>
 </html>
+
 
