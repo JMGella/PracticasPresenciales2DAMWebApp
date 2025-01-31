@@ -1,5 +1,5 @@
 <?php
-$api_url = "http://localhost:8080/authors"; // Ajusta esta URL según tu API
+$api_url = "http://localhost:8080/authors";
 
 // Realizar la solicitud GET a la API
 $response = file_get_contents($api_url);
@@ -34,7 +34,6 @@ if ($authors === NULL) {
         <th>Nombre</th>
         <th>Apellido</th>
         <th>Fecha de Nacimiento</th>
-        <th>Libros Publicados</th>
         <th>Activo</th>
     </tr>
     </thead>

@@ -1,20 +1,18 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "bookhub";
+$api_url = "http://localhost:8080/books";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+// Realizar la solicitud GET a la API
+$response = file_get_contents($api_url);
 
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
+if ($response === FALSE) {
+    die("Error al conectar con la API");
 }
 
-$sql = "SELECT books.id, books.title, books.genre, books.publisher, books.publicationDate, books.active, 
-               authors.name AS author_name, authors.surname AS author_surname 
-        FROM books
-        INNER JOIN authors ON books.author_id = authors.id";
-$result = $conn->query($sql);
+$books = json_decode($response, true);
+
+if ($books === NULL) {
+    die("Error al decodificar la respuesta JSON");
+}
 ?>
 
 <!DOCTYPE html>
@@ -37,22 +35,21 @@ $result = $conn->query($sql);
         <th>Género</th>
         <th>Editorial</th>
         <th>Fecha de Publicación</th>
-        <th>Autor</th>
         <th>Activo</th>
     </tr>
     </thead>
     <tbody>
     <?php
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
+
+    if (!empty($books)) {
+        foreach ($books as $book) {
             echo "<tr>
-                            <td>{$row['id']}</td>
-                            <td>{$row['title']}</td>
-                            <td>{$row['genre']}</td>
-                            <td>{$row['publisher']}</td>
-                            <td>" . date("d/m/Y", strtotime($row['publicationDate'])) . "</td>
-                            <td>{$row['author_name']} {$row['author_surname']}</td>
-                            <td>" . ($row['active'] ? 'Sí' : 'No') . "</td>
+                            <td>{$book['id']}</td>
+                            <td>{$book['title']}</td>
+                            <td>{$book['genre']}</td>
+                            <td>{$book['publisher']}</td>
+                            <td>" . date("d/m/Y", strtotime($book['publicationDate'])) . "</td>
+                            <td>" . ($book['active'] ? 'Sí' : 'No') . "</td>
                           </tr>";
         }
     } else {
@@ -68,6 +65,6 @@ $result = $conn->query($sql);
 </html>
 
 <?php
-$conn->close();
+
 ?>
 
