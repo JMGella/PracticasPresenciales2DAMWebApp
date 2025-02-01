@@ -16,13 +16,13 @@
 <p>Books and Authors</p>
 
 <div class="d-flex justify-content-center gap-3 mt-4">
-    <a href="views/list_books.php" class="btn btn-primary">📖 View Books</a>
-    <a href="views/list_authors.php" class="btn btn-secondary">👤 View Authors</a>
+    <a href="list_books.php" class="btn btn-primary">📖 View Books</a>
+    <a href="list_authors.php" class="btn btn-secondary">👤 View Authors</a>
 </div>
 
 </body>
 <footer class="text-center mt-4">
-    <p>&copy; 2025 BookHub. Todos los derechos reservados.</p>
+    <p>&copy; 2025 BookHub. All rights reserved.</p>
 </footer>
 </body>
 </html>

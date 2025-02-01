@@ -1,17 +1,17 @@
 <?php
 $api_url = "http://localhost:8080/books";
 
-// Realizar la solicitud GET a la API
+
 $response = file_get_contents($api_url);
 
 if ($response === FALSE) {
-    die("Error al conectar con la API");
+    die("Error connecting to API");
 }
 
 $books = json_decode($response, true);
 
 if ($books === NULL) {
-    die("Error al decodificar la respuesta JSON");
+    die("Error decoding JSON response");
 }
 ?>
 
@@ -20,22 +20,22 @@ if ($books === NULL) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Libros</title>
+    <title>Book List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="container mt-4">
 
-<h2 class="text-center">Lista de Libros</h2>
+<h2 class="text-center">Book List</h2>
 
 <table class="table table-striped table-bordered">
     <thead class="table-dark">
     <tr>
         <th>ID</th>
-        <th>Título</th>
-        <th>Género</th>
-        <th>Editorial</th>
-        <th>Fecha de Publicación</th>
-        <th>Activo</th>
+        <th>Title</th>
+        <th>Genre</th>
+        <th>Publisher</th>
+        <th>Publisher date</th>
+        <th>Active</th>
     </tr>
     </thead>
     <tbody>
@@ -53,18 +53,22 @@ if ($books === NULL) {
                           </tr>";
         }
     } else {
-        echo "<tr><td colspan='7' class='text-center'>No hay libros registrados</td></tr>";
+        echo "<tr><td colspan='7' class='text-center'>No books registered</td></tr>";
     }
     ?>
     </tbody>
 </table>
 
-<a href="list_authors.php" class="btn btn-primary">Ver Autores</a>
-
+<a href="list_authors.php" class="btn btn-primary">View Authors</a>
+<br>
+<br>
 </body>
+
+<form action="index.php" method="get">
+    <button type="submit">Back</button>
+
+</form>
 </html>
 
-<?php
 
-?>
 
