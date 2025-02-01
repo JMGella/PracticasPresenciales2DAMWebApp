@@ -1,5 +1,5 @@
 <?php
-$url = "http://localhost:8080/authors"; // Reemplaza con tu endpoint real
+$url = "http://localhost:8080/authors";
 
 // Iniciar cURL
 $ch = curl_init($url);
